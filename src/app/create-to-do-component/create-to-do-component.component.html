@@ -1,0 +1,32 @@
+<form [formGroup]="taskFrom">
+<label> Name of task</label>
+<div class="form-group mb-0">
+    <input class="form-control" formControlName="taskname"
+        [ngClass]="{ 'is-invalid': submitted && f.taskname.errors }" />
+    <div *ngIf="submitted && f.taskname.errors" class="invalid-feedback">
+        <div *ngIf="f.taskname.errors.required">Task name is required</div>
+    </div>
+</div>
+
+<label> Task Description</label>
+<div class="form-group mb-0">
+    <textarea formControlName="taskdiscription" [ngClass]="{ 'is-invalid': submitted && f.taskdiscription.errors }">
+<div *ngIf="submitted && f.taskname.errors" class="invalid-feedback">
+<div *ngIf="f.taskdiscription.errors.required">Task Description is required</div>
+</div>
+</textarea>
+</div>
+
+<label> Repeating Task</label>
+<div class="form-group ">
+    <select class="form-control inline" formControlName="repeattask" (change)="onFromSumbit()"
+        [ngClass]="{ 'is-invalid': submitted && f.repeattask.errors }">
+        <option value='0'>Y</option>
+        <option value='1'>Y</option>
+        <div *ngIf="submitted && f.repeattask.errors" class="error-feedback">
+            <div *ngIf="f.repeattask.errors.required">year is required</div>
+        </div>
+    </select>
+</div>
+
+</form>
